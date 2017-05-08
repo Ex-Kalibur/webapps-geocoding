@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>CPS630 - Lab 3 - Geolocation</title>
+
+    <meta name=viewport content="width=device-width, initial-scale=1"/>
+
+    <script src="js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJOQDhJCcqlhzBPPiaWk5bcyyP9gx6OGk&callback=initMap"
+    async defer></script>
+
+    <link rel="stylesheet" type="text/css" href="css/global-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/theme.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="active header-element"><a class="smallCaps">Home</a></li>
+            <li class="header-element"><a class="smallCaps" href="">About</a></li>
+            <li class="header-element"><a class="smallCaps" href="../">Labs</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="section-map" class="panel container-float">
+            <header>
+                <div class="ribbon"></div>
+                <h3 class="header-section smallCaps">Current Location</h3>
+            </header>
+            <section id="section-map-top">
+                <section id="section-map-input" class="container-float">
+                    Enter a city to change current location:
+                    <div class="input-container">
+                        <span class="input-label">City</span>
+                        <input type="text" id="search" class="smallCaps" required="true" onkeypress="checkSubmit(event)"/>
+                    </div>
+                    <input type="submit" id="submit" class="smallCaps" onclick="validateInput()"></input>
+                </section>
+
+                <section id="section-map-current" class="panel-inset">
+                    <h4 class="location-address">[Address]</h4>
+                    <dl class="location">
+                        <dt>Lat:</dt><dd class="location-lat">[Latitude]</dd>
+                        <dt>Lng:</dt><dd class="location-lng">[Longitude]</dd>
+                        <dt>City:</dt><dd class="location-city">[City]</dd>
+                        <dt>Country:</dt><dd class="location-country">[Country]</dd>
+                        <dt>Dist:</dt><dd class="location-dist">[Distance]</dd>
+                    </dl>
+                </section>
+            </section>
+
+            <section id="section-map-wrapper">
+                <div id="currentLocationMap"></div>
+            </section>
+        </section>
+
+        <section id="section-compare" class="panel">
+            <header>
+                <div class="ribbon"></div>
+                <h3 class="header-section smallCaps">Compare</h3>
+            </header>
+            Upload a file containing latitude-longitude pairs to compare distances:
+            <section id="section-input-drop">
+                <section id="file-drop-zone" ondragover="over(event);" ondrop="drop(event);">
+                    <div class="center center-vertical center-text">
+                        <i id="upload-icon" class="material-icons center center-vertical">&#xE2C6;</i>
+                        <div id="upload-text">Upload</div>
+                    </div>
+                </section>
+                <input type="button" id="compare" class="smallCaps" onclick="parseFile();" value="Compare" disabled></input>
+            </section>
+            <section id="section-compare-results">
+                <header>
+                    <div class="ribbon"></div>
+                    <h3 class="header-section smallCaps">Results</h3>
+                </header>
+
+                <section id="section-compare-contents">
+
+                </section>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <details class="smallCaps">
+            <summary>&copy; 2017</summary>
+            <div>Christopher Collins 500512454</div>
+        </details>
+    </footer>
+</body>
+
+</html>
